@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\PastaController;
+use App\Http\Controllers\PlaylistController;
+use App\Models\Playlist;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,26 +15,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Route::get('contatos/buscar',[ContatosController::class,'buscar']);
-Route::resource('contatos',ContatosController::class);
+Route::get('videos/buscar',[PlaylistController::class,'buscar']);
+Route::resource('videos',PlaylistController::class);
 
-Route::get('livros/buscar',[LivrosController::class,'buscar']);
-Route::resource('livros',LivrosController::class);
-
-Route::get('emprestimos/buscar',[EmprestimosController::class,'buscar']);
-Route::put('emprestimos/{emprestimo}/devolver',[EmprestimosController::class,'devolver'])->name('emprestimos.devolver');
-Route::resource('emprestimos',EmprestimosController::class);
+Route::get('playlist/buscar',[PastaController::class,'buscar']);
+Route::resource('playlist',PastaController::class);
 
 Auth::routes();
 
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
